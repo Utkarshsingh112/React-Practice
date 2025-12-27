@@ -1070,7 +1070,7 @@
 // export  default App;
 
 //~React Router
-import { BrowserRouter, Routes,Route, Link, NavLink } from "react-router";
+// import { BrowserRouter, Routes,Route, Link, NavLink } from "react-router";
 // import Test from "./Tets";
 // export default function App(){ // we can also use the NavLink because it identifies the active class meaning
 //     //kis oage ke upar hai apn ye navlink bta deta hai like with the help of some css it can highlight which link we are on
@@ -1215,41 +1215,32 @@ import { BrowserRouter, Routes,Route, Link, NavLink } from "react-router";
 //     )
 //   }
 //~ Add User and User List Routes for APIs  
-
+import { BrowserRouter, Routes,Route, Link, NavLink } from "react-router";
 import { Fragment, useEffect, useState } from "react";
 import './App.css'
-  export default function App(){
-    const[loading,setLoading]=useState(false);
-    const[userData,setUserData]=useState([]);
-    useEffect(()=>{
-        setLoading(true)
-        getUserData();
-    },[])
-    const getUserData=async()=>{
-        const url="http://localhost:3000/users"
-        let response=await fetch(url);
-        response=await response.json();
-        console.log(response);
-        setUserData(response);
-        setLoading(false);
-    }
+import UserList from "./UserList";
+import UserAdd from "./UserAdd";
+ function App(){
+    
     return(
-        <div>
-            <h1>Fetching the api using the JSON with LOADER</h1>
-            {
-                   !loading? //ye ek code line hai na ki faltu ki cheeze
-                userData.map((user)=>(
-                   <ul key={user.id} className="user-list">
-                    <li>{user.name}</li>
-                    <li>{user.email}</li>
-                    <li>{user.age}</li>
-                    <li>{user.id}</li>
-                   </ul>
-                ))
-                :<h1>Loading Data</h1>
-            }
-        </div>
+       <div>
+        <ul className="nav-list">
+          <li>
+            <NavLink to="/">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="/add">Add User</NavLink>
+
+          </li>
+        </ul>
+       {/* <UserAdd/> */}
+       <Routes>
+        <Route path="/" element={<UserList/>}/>
+        <Route path="/add" element={<UserAdd/>}/>
+
+       </Routes>
+       </div>
     )
   }
-
+export default App;
 

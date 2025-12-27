@@ -80,3 +80,14 @@ body {
   font-weight: 600;
   color: #111;
 }
+
+
+.nav-list{
+  display:flex;
+  width: 400px;
+  justify-content: space-around;
+  border:1px solid #aaa;
+  margin:0;
+  padding:10px;
+  list-style: none;
+}
