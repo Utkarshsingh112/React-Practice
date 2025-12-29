@@ -1215,6 +1215,37 @@
 //     )
 //   }
 //~ Add User and User List Routes for APIs  
+// import { BrowserRouter, Routes,Route, Link, NavLink } from "react-router";
+// import { Fragment, useEffect, useState } from "react";
+// import './App.css'
+// import UserList from "./UserList";
+// import UserAdd from "./UserAdd";
+//  function App(){
+    
+//     return(
+//        <div>
+//         <ul className="nav-list">
+//           <li>
+//             <NavLink to="/">Home</NavLink>
+//           </li>
+//           <li>
+//             <NavLink to="/add">Add User</NavLink>
+
+//           </li>
+//         </ul>
+//        {/* <UserAdd/> */}
+//        <Routes>
+//         <Route path="/" element={<UserList/>}/>
+//         <Route path="/add" element={<UserAdd/>}/>
+
+//        </Routes>
+//        </div>
+//     )
+//   }
+// export default App;
+
+
+//!POST method Api use and how can we use it 
 import { BrowserRouter, Routes,Route, Link, NavLink } from "react-router";
 import { Fragment, useEffect, useState } from "react";
 import './App.css'
@@ -1243,4 +1274,3 @@ import UserAdd from "./UserAdd";
     )
   }
 export default App;
-
