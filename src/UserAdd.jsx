@@ -10,7 +10,7 @@ const createUser=async()=>{
   console.log(name,age,email);
   const url="http://localhost:3000/users";
   let response=await fetch(url,{
-    method:"POST",
+    method:"POST",  //In the psotmethod we have to initilze it not like the GET method 
     headers:{
       "Content-Type":"application/json"
     },

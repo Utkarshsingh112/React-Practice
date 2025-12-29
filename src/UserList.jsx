@@ -19,6 +19,12 @@ function UserList  ()  {
   return (
      <div>
             <h1>API Data </h1>
+            <ul className='user-list user-list-header'>
+                <li>Name</li>
+                <li>Email</li>
+                <li>Age</li>
+                <li>Delete</li>
+            </ul>
             {
                    !loading? //ye ek code line hai na ki faltu ki cheeze
                 userData.map((user)=>(
@@ -26,7 +32,6 @@ function UserList  ()  {
                     <li>{user.name}</li>
                     <li>{user.email}</li>
                     <li>{user.age}</li>
-                    <li>{user.id}</li>
                    </ul>
                 ))
                 :<h1>Loading Data</h1>
