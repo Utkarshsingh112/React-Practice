@@ -166,3 +166,59 @@ h1 {
     color: #555;
   }
 }
+
+
+.user-edit {
+  max-width: 420px;
+  margin: 80px auto;
+  padding: 30px 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}
+
+.user-edit h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 22px;
+  font-weight: 600;
+  color: #222;
+}
+
+.user-edit input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: all 0.25s ease;
+}
+
+.user-edit input:focus {
+  outline: none;
+  border-color: #000;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.user-edit button {
+  width: 100%;
+  padding: 12px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.user-edit button:hover {
+  background: #222;
+}
+
+.user-edit button:active {
+  transform: scale(0.98);
+}

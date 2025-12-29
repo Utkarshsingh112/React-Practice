@@ -1251,6 +1251,7 @@ import { Fragment, useEffect, useState } from "react";
 import './App.css'
 import UserList from "./UserList";
 import UserAdd from "./UserAdd";
+import UserEdit from "./UserEdit";
  function App(){
     
     return(
@@ -1268,6 +1269,8 @@ import UserAdd from "./UserAdd";
        <Routes>
         <Route path="/" element={<UserList/>}/>
         <Route path="/add" element={<UserAdd/>}/>
+        <Route path="/edit/:id" element={<UserEdit/>}/>
+
 
        </Routes>
        </div>

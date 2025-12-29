@@ -1,43 +1,62 @@
-import React from 'react'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
-function UserList  ()  {
-    const[loading,setLoading]=useState(false);
-        const[userData,setUserData]=useState([]);
-        useEffect(()=>{
-            setLoading(true)
-            getUserData();
-        },[])
-        const getUserData=async()=>{
-            const url="http://localhost:3000/users"
-            let response=await fetch(url);
-            response=await response.json();
-            console.log(response);
-            setUserData(response);
-            setLoading(false);
-        }
+function UserList() {
+  const [userData, setUserData] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const url = "http://localhost:3000/users";
+
+  useEffect(() => {
+    setLoading(true);
+    getUserData();
+  }, []);
+
+  const getUserData = async () => {
+    const response = await fetch(url);
+    const data = await response.json();
+    setUserData(data);
+    setLoading(false);
+  };
+
+  const deleteUser = async (id) => {
+    await fetch(`${url}/${id}`, { method: "DELETE" });
+    alert("User deleted successfully");
+    getUserData();
+  };
+
+  const editUser = (id) => {
+    navigate(`/edit/${id}`);
+  };
+
   return (
-     <div>
-            <h1>API Data </h1>
-            <ul className='user-list user-list-header'>
-                <li>Name</li>
-                <li>Email</li>
-                <li>Age</li>
-                <li>Delete</li>
-            </ul>
-            {
-                   !loading? //ye ek code line hai na ki faltu ki cheeze
-                userData.map((user)=>(
-                   <ul key={user.id} className="user-list">
-                    <li>{user.name}</li>
-                    <li>{user.email}</li>
-                    <li>{user.age}</li>
-                   </ul>
-                ))
-                :<h1>Loading Data</h1>
-            }
-        </div>
-  )
+    <div>
+      <h1>API Data</h1>
+
+      <ul className="user-list user-list-header">
+        <li>Name</li>
+        <li>Email</li>
+        <li>Age</li>
+        <li>Action</li>
+      </ul>
+
+      {!loading ? (
+        userData.map((user) => (
+          <ul key={user.id} className="user-list">
+            <li>{user.name}</li>
+            <li>{user.email}</li>
+            <li>{user.age}</li>
+            <li>
+              <button className="delete-btn delete-btn:hover" onClick={() => deleteUser(user.id)}>Delete</button>
+              <button onClick={() => editUser(user.id)}>Edit</button>
+            </li>
+          </ul>
+        ))
+      ) : (
+        <h1>Loading Data</h1>
+      )}
+    </div>
+  );
 }
 
 export default UserList;
