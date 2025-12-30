@@ -13,47 +13,51 @@ function UserEdit() {
   }, []);
 
   const getUserData = async () => {
-    const url = `http://localhost:3000/users/${id}`;
-    let response = await fetch(url);
-    response = await response.json();
+    const res = await fetch(`http://localhost:3000/users/${id}`);
+    const data = await res.json();
 
-    setName(response.name);
-    setAge(response.age);
-    setEmail(response.email);
+    setName(data.name);
+    setAge(data.age);
+    setEmail(data.email);
+  };
+
+  const updateUser = async () => {
+    const res = await fetch(`http://localhost:3000/users/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, age, email }),
+    });
+
+    if (res.ok) {
+      alert("User updated successfully");
+    }
   };
 
   return (
     <div className="user-edit">
-      <h1>Edit User Details</h1>
+      <h1>Edit User</h1>
 
       <input
-        type="text"
         value={name}
-        placeholder="Type new name"
         onChange={(e) => setName(e.target.value)}
+        placeholder="Name"
       />
 
-      <br />
-
       <input
-        type="text"
         value={age}
-        placeholder="Type new age"
         onChange={(e) => setAge(e.target.value)}
+        placeholder="Age"
       />
-
-      <br />
 
       <input
-        type="text"
         value={email}
-        placeholder="Type new mail"
         onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
       />
 
-      <br />
-
-      <button>Update User</button>
+      <button onClick={updateUser}>Update User</button>
     </div>
   );
 }
