@@ -1,43 +1,76 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-function UserAdd ()  {
+function UserAdd() {
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [email, setEmail] = useState("");
+  const [success, setSuccess] = useState(false);
 
-const[name,setName]=useState("");
-const[age,setAge]=useState("");
-const[email,setEmail]=useState("");
+  const createUser = async () => {
+   
+    if (!name || !age || !email) {
+      alert("All fields are mandatory");
+      return;
+    }
 
-const createUser=async()=>{
-  console.log(name,age,email);
-  const url="http://localhost:3000/users";
-  let response=await fetch(url,{
-    method:"POST",  //In the psotmethod we have to initilze it not like the GET method 
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify({
-      name:name,
-      age:age,
-      email:email
-    })
-  });
-  response=await response.json();
-  console.log(response);
+    const url = "http://localhost:3000/users";
+
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ name, age, email }),
+    });
+
+    if (response.ok) {
+      setSuccess(true);
+
   
+      setName("");
+      setAge("");
+      setEmail("");
+
   
-}
+      setTimeout(() => setSuccess(false), 3000);
+    }
+  };
+
   return (
-    <div style={{backgroundColor:"yellow",color:"black",padding:10,textAlign:"center"}}>
-        <h1>Add New User</h1>
-        <input onChange={(event)=>setName(event.target.value)}  type="text" placeholder="Enter name"/>
-        <br></br>
-        <input onChange={(event)=>setAge(event.target.value)} type="text" placeholder="Enter age"/>
-        <br></br> 
-        <input onChange={(event)=>setEmail(event.target.value)} type="text" placeholder="Enter email"/>
-        <br></br>
-        <button onClick={createUser}>Add User</button>
-        
+    <div className="user-add">
+      <h1>Add New User</h1>
+
+      <input
+        type="text"
+        placeholder="Enter name"
+        value={name}
+        required
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <input
+        type="number"
+        placeholder="Enter age"
+        value={age}
+        required
+        onChange={(e) => setAge(e.target.value)}
+      />
+
+      <input
+        type="email"
+        placeholder="Enter email"
+        value={email}
+        required
+        onChange={(e) => setEmail(e.target.value)}
+      />
+
+      <button onClick={createUser}>Add User</button>
+
+      {success && (
+        <p className="success-msg">✅ User added successfully!</p>
+      )}
     </div>
-  )
+  );
 }
 
 export default UserAdd;
