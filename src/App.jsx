@@ -14,6 +14,9 @@
 // };
 // export default App;
 
+import { useState } from "react"
+import { useBeforeUnload } from "react-router"
+
 // function App() {
 
 //    const name1=undefined;
@@ -1246,34 +1249,89 @@
 
 
 //!POST method Api use and how can we use it 
-import { BrowserRouter, Routes,Route, Link, NavLink } from "react-router";
-import { Fragment, useEffect, useState } from "react";
-import './App.css'
-import UserList from "./UserList";
-import UserAdd from "./UserAdd";
-import UserEdit from "./UserEdit";
- function App(){
+// import { BrowserRouter, Routes,Route, Link, NavLink } from "react-router";
+// import { Fragment, useEffect, useState } from "react";
+// import './App.css'
+// import UserList from "./UserList";
+// import UserAdd from "./UserAdd";
+// import UserEdit from "./UserEdit";
+//  function App(){
     
-    return(
-       <div>
-        <ul className="nav-list">
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/add">Add User</NavLink>
+//     return(
+//        <div>
+//         <ul className="nav-list">
+//           <li>
+//             <NavLink to="/">Home</NavLink>
+//           </li>
+//           <li>
+//             <NavLink to="/add">Add User</NavLink>
 
-          </li>
-        </ul>
-       {/* <UserAdd/> */}
-       <Routes>
-        <Route path="/" element={<UserList/>}/>
-        <Route path="/add" element={<UserAdd/>}/>
-        <Route path="/edit/:id" element={<UserEdit/>}/>
+//           </li>
+//         </ul>
+//        {/* <UserAdd/> */}
+//        <Routes>
+//         <Route path="/" element={<UserList/>}/>
+//         <Route path="/add" element={<UserAdd/>}/>
+//         <Route path="/edit/:id" element={<UserEdit/>}/>
 
 
-       </Routes>
-       </div>
-    )
+//        </Routes>
+//        </div>
+//     )
+//   }
+// export default App;
+
+
+//~ FORM VALIDATION IN REACT JS
+import "./App.css"
+
+function App  () {
+  const [name,setName]=useState('');
+  const [nameErr,setNameErr]=useState();
+
+   const [password,setPassword]=useState('');
+  const [passErr,setPassErr]=useState();
+
+  const handleName = (event) => {
+  const value = event.target.value;
+  console.log(value);
+  setName(value); // Missing this line!
+  if (value.length > 5) {
+    setNameErr("Please enter valid name under 5 characters");
+  } else {
+    setNameErr('');
   }
+};
+
+const handlePassword = (event) => {
+  const value = event.target.value;
+  let regex = /^[A-Z0-9]+$/i;
+  setPassword(value); // Missing this line!
+  if (regex.test(value)) {
+    setPassErr(''); // Fix: pass empty string, not undefined
+  } else {
+    setPassErr("Please enter valid password - only numbers and alphabets allowed");
+  }
+};
+
+
+  return (
+    <div className="form-validation">
+    <input className={nameErr?'error':''} type="text" onChange={handleName} placeholder="Name"/>
+    <span>{nameErr && nameErr}</span>
+    <br></br>
+    <br></br>
+
+    <input  className={passErr?'error':''} type="text" onChange={handlePassword} placeholder="Password"/>
+    <span>{passErr && passErr}</span>
+
+    <br></br>
+    <br></br>
+
+    <button disabled={nameErr || passErr}>Login</button>
+
+    </div>
+  )
+}
+
 export default App;

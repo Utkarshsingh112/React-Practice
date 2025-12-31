@@ -272,3 +272,120 @@ h1 {
 .user-edit button:active {
   transform: scale(0.98);
 }
+
+
+
+
+
+
+
+
+/*css for form validation*/
+/* Reset & base */
+
+.form-validation {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 40px;
+  background: linear-gradient(135deg, #d60000 0%, #764ba2 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.form-validation input {
+  width: 100%;
+  padding: 17px 20px;
+  margin: 10px 0 15px 0;
+  border: 2px solid #e1e5e9;
+  border-radius: 12px;
+  font-size: 16px;
+  background: rgba(255, 255, 255, 0.95);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-validation input:focus {
+  outline: none;
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Error class styling for conditional className */
+.form-validation input.error {
+  border-color: #e74c3c;
+  background: rgba(231, 76, 60, 0.05);
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+}
+
+.form-validation input.error:focus {
+  border-color: #c0392b;
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.2);
+  transform: translateY(-2px);
+}
+
+.form-validation input:invalid {
+  border-color: #e74c3c;
+}
+
+.form-validation span {
+  display: block;
+  color: #f92912;
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 5px;
+  min-height: 20px;
+  padding: 5px 0;
+}
+
+.form-validation button {
+  width: 100%;
+  padding: 16px;
+  background: linear-gradient(135deg, #ff03e6 0%, #357abd 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.form-validation button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(74, 144, 226, 0.4);
+}
+
+.form-validation button:active:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+/* Disabled button styling */
+.form-validation button:disabled {
+  background: linear-gradient(135deg, #bdc3c7 0%, #95a5a6 100%);
+  color: #7f8c8d;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.form-validation button:disabled:hover {
+  transform: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+br {
+  display: none;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+  .form-validation {
+    margin: 20px;
+    padding: 30px 20px;
+  }
+}
