@@ -7,8 +7,10 @@ import { BrowserRouter } from 'react-router'
 
 // import Counter,{Child} from './Counter.jsx'
 createRoot(document.getElementById('root')).render(
-  < BrowserRouter>
+  // < BrowserRouter>
+  <StrictMode>
     <App />
+  </StrictMode>
 
-  </BrowserRouter>,
+  // </BrowserRouter>,
 )
