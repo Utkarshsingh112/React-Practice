@@ -14,7 +14,7 @@
 // };
 // export default App;
 
-import { useBeforeUnload } from "react-router"
+// import { useBeforeUnload } from "react-router"
 
 // function App() {
 
@@ -1383,7 +1383,31 @@ import { useBeforeUnload } from "react-router"
 
 //& useReducer Hook in React JS
 //ek he satte ke ander multipel value store karwani hai to we can use this 
-import { useReducer } from "react";
-import './App.css'
+// import { useReducer } from "react";
+// import './App.css'
+
+
+//~Lazy Loading in the react js 
+//ye jb use krte hai jb apn chahte hai ki koi component tab load ho jb user chahe
+//and isse apnke app ki performance bhi better hoti hai
+//and ise hum initilise krte hai on the parent component me jis me hum us child component 
+
+// import { useState } from "react";
+// import { Suspense, lazy, use } from "react";
+// // import UserProduct from "./UserProduct";
+// const UserProduct = lazy(() => import("./UserProduct"));
+//  function App(){
+//     const [laod,setLoad]=useState(false);
+//     return(
+//             <div>
+//                 <h1>Lazy Loading in the react js</h1>
+//               {
+//                 laod?<Suspense fallback="Loading..."><UserProduct/></Suspense>:null
+//               }
+//                 <button onClick={()=>setLoad(true)}> Load product</button>
+//             </div>
+//     )
+//  }
+//  export default App;
 
  
